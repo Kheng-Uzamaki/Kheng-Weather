@@ -21,6 +21,7 @@
     </div>
     <div class="weather">
       <img src="images/rain.png" alt="" class="weather-icon" />
+      <p class="weather-status">Clear</p>
       <h1 class="temp">22°C</h1>
       <h2 class="city">Phnom Penh</h2>
       <div class="details">
@@ -50,6 +51,7 @@
     const searchBtn = document.querySelector(".search button");
 
     const weatherIcon = document.querySelector(".weather-icon");
+    const weatherStatus = document.querySelector(".weather-status");
 
     async function checkWeather(city) {
       const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
@@ -78,6 +80,7 @@
         }
         document.querySelector(".weather").style.display = "block";
         document.querySelector(".error").style.display = "none";
+        weatherStatus.innerHTML = data.weather[0].main;
       }
     }
 
